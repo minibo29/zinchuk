@@ -53,4 +53,21 @@ Route::group(['middleware' => ['web']], function () {
 
         return redirect('/');
     });
+
+
+    /** Company */
+    Route::get('company', 'CompanyController@index');
+    Route::any('company/add', 'CompanyController@addCompany');
+    Route::get('company/{id}', 'CompanyController@detailCompany');
+    Route::get('history/{id}', 'CompanyController@historyCompany');
+    Route::post('history/add', 'CompanyController@addCommentToHistory');
+
+    /** Employee */
+    Route::post('employee/add', 'EmployeeController@addEmployee');
+    Route::any('employee/autoload-employee', 'EmployeeController@autoloadEmployee');
+
+
+    Route::post('physical-address/add', 'PhysicalAddressController@addPhysicalAddress');
+    Route::post('building-object/add', 'BuildingObjectController@addBuildingObject');
+
 });

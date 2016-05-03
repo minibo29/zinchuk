@@ -8,12 +8,16 @@
     <title>Laravel Quickstart - Basic</title>
 
     <!-- Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ url('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ url('/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ url('/css/select2-bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url('/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    {{--<link href="{{ url('/css/bootstrap.min.css') }}" rel="stylesheet">--}}
 
     <style>
         body {
@@ -34,6 +38,9 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Task List
                 </a>
+                <a class="navbar-brand" href="{{ url('/company') }}">
+                    Companies
+                </a>
             </div>
 
         </div>
@@ -42,8 +49,13 @@
     @yield('content')
 
     <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="{{ url('js/jquery-2.2.3.min.js') }}"></script>
+    {{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>--}}
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{{ url('js/select2.full.min.js') }}"></script>
+    <script src="{{ url('js/moment.js') }}"></script>
+    <script src="{{ url('js/bootstrap-datetimepicker.js') }}"></script>
+    <script src="{{ url('js/main.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 </body>
 </html>

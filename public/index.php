@@ -47,6 +47,16 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 |
 */
 
+function p ($p, $dai = false) {
+  echo '<pre>';
+    print_r($p);
+  echo '</pre>';
+  if($dai){
+    exit;
+  }
+}
+
+
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
 $response = $kernel->handle(
