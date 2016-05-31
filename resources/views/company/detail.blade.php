@@ -13,7 +13,7 @@
 
       <!--   Low Address  -->
       <fieldset>
-        <label>Юретична адреса:</label>
+        <label>Юредична адреса:</label>
         {{ $company->address }}
       </fieldset>
 

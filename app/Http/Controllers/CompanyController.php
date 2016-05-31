@@ -28,19 +28,39 @@ class CompanyController extends Controller
    *  display all companies
    */
   public function index(){
-//p(time(), 1);
-    $company = CompanyModel::select( '*', 'history.reminder as reminder', 'history.employee_id as employee_id', 	'history.text as comment')
-      ->leftJoin('history',
+    $order = Request::get('order')? Request::get('order') : 'created_at';
+    $type = Request::get('type')? Request::get('type') : 'asc';
+
+    $company = CompanyModel::orderBy($order, $type)->get();
+    return view('company.view', [
+      'companies' => $company,
+      'order' => $order,
+      'type' => $type
+
+    ]);
+  }
+
+  /**
+   *  display all companies
+   */
+  public function displayReminder(){
+    $company = CompanyModel::select( 'company.id as id', 'company.name as name', 'company.address as address', 'company.form_of as form_of', 'history.reminder as reminder', 'history.employee_id as employee_id', 	'history.text as comment')
+      ->join('history',
         function($join)
         {
           $join->on('company.id', '=', 'history.company_id')
-            ->where('history.reminder', '>', time());
+            ->where('history.reminder', '>', date('Y-m-d H:i:s'))
+            ->where('history.reminder', '!=', '');
+        }
+      )->join('employee',
+        function($join)
+        {
+          $join->on('employee.id', '=', 'history.employee_id');
         }
       )
       ->orderBy('reminder', 'asc')
       ->get();
-//    p($company,1);
-    return view('company.view', [
+    return view('company.reminder', [
       'companies' => $company
     ]);
   }

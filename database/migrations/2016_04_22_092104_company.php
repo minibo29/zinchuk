@@ -23,11 +23,6 @@ class Company extends Migration
             $table->integer('rating')->unsigned()->nullable();
             $table->timestamps();
         });
-
-
-
-
-
     }
 
     /**

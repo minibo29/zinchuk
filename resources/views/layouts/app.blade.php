@@ -36,7 +36,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Task List
+                    Home
                 </a>
                 <a class="navbar-brand" href="{{ url('/company') }}">
                     Companies
@@ -54,6 +54,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="{{ url('js/select2.full.min.js') }}"></script>
     <script src="{{ url('js/moment.js') }}"></script>
+    <script src="{{ url('js/moment.locale.js') }}"></script>
     <script src="{{ url('js/bootstrap-datetimepicker.js') }}"></script>
     <script src="{{ url('js/main.js') }}"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}

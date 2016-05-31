@@ -7,6 +7,8 @@ $(document).ready(function(){
     $("#addEmployee-form").submit(function(e){
         e.preventDefault();
         var formData = $("#addEmployee-form").serialize();
+formData['wp-ajax'] = 'fffff';
+console.log(formData);
         $.ajax({
             type: "POST",
             url : "/employee/add",
@@ -179,11 +181,17 @@ $(document).ready(function(){
         return markup;
     }
 
-
     /** datepicker */
     $('#history-reminder').datetimepicker({
-        locale: 'ru'
+        locale: 'uk',
+        format: 'Y-MM-DD HH:mm'
     });
+
+    $('#employee-birthday').datetimepicker({
+        locale: 'uk',
+        format: 'Y-MM-DD'
+    });
+
 
 
 });

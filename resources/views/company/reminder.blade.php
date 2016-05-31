@@ -23,9 +23,12 @@
                                 <tr>
                                     <th>#</th>
                                     <th>ПП</th>
-                                    <th><a href="?order=name&type={{ ( $order == 'name' && $type == 'asc' ) ? 'desc' : 'asc' }}">Назва <span class="glyphicon {{ ( $order == 'name' && $type == 'asc' ) ? 'glyphicon-sort-by-alphabet-alt' : 'glyphicon-sort-by-alphabet' }}" aria-hidden="true"></span></a></th>
-                                    <th><a href="?order=address&type={{ ( $order == 'address' && $type == 'asc' ) ? 'desc' : 'asc' }}">Адреса <span class="glyphicon {{ ( $order == 'address' && $type == 'asc' ) ? 'glyphicon-sort-by-alphabet-alt' : 'glyphicon-sort-by-alphabet' }}" aria-hidden="true"></span></a></th>
-                                    <th><a href="?order=rating&type={{ ( $order == 'rating' && $type == 'asc' ) ? 'desc' : 'asc' }}">Рейтинг<span class="glyphicon {{ ( $order == 'rating' && $type == 'asc' ) ? 'glyphicon-sort-by-attributes' : 'glyphicon-sort-by-attributes-alt' }}" aria-hidden="true"></span></a></th>
+                                    <th>Назва</th>
+                                    <th>Адреса</th>
+                                    <th>Телефон</th>
+                                    <th>Сонтактна особа</th>
+                                    <th>Рейтинг</th>
+                                    <th>Нагадування</th>
                                     <th>Коментар</th>
                                 </tr>
                             </thead>
@@ -36,8 +39,11 @@
                                         <td class="table-text"><div>{{ $company->form_of }}</div></td>
                                         <td class="table-text"><div><a href="/company/{{ $company->id }}">{{ $company->name }}</a></div></td>
                                         <td class="table-text"><div>{{ $company->address}}</div></td>
+                                        <td class="table-text"><div>{{ $company->getEmployee->phone}}</div></td>
+                                        <td class="table-text"><div>{{ $company->getEmployee->name}} {{ $company->getEmployee->middle_name}} {{ $company->getEmployee->surname}} </div></td>
                                         <td class="table-text"><div>{{ $company->rating}}</div></td>
-                                        <td class="table-text"><div>comment</div></td>
+                                        <td class="table-text"><div>{{ $company->reminder}}</div></td>
+                                        <td class="table-text"><div>{{ $company->comment}}</div></td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -45,12 +51,7 @@
                     </div>
                 </div>
             @endif
-
-            <div>
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addCompany"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Додати нову компанію</button>
-            </div>
         </div>
     </div>
 
-    @include('modal.addCompany')
 @endsection
